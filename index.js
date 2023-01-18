@@ -20,6 +20,12 @@ function logger(msg) {
   scoreEDisplay.innerHTML = "<br> <br> <br> égalité = " + scoreE;
 }
 
+function display() {
+  for (i = 0; i < database.length; i++) {
+    cases[i].textContent = database[i];
+  }
+}
+
 function play(nb) {
   if (playerWins == false && countMoves <= 9 && database[nb] == "") {
     if (currentTurn == false) {
@@ -29,13 +35,13 @@ function play(nb) {
       symbol = "0";
       currentTurn = false;
     }
-    countMoves++;
-    cases[nb].textContent = symbol;
     database[nb] = symbol;
+    countMoves++;
 
     win("X");
     win("0");
     IA();
+    display();
   }
 }
 let count1 = 0;
